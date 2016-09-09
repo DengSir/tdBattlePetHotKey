@@ -1,0 +1,9 @@
+## Interface: 70000
+## Title: tdBattlePetHotKey
+## Author: DengSir
+## Version: 70000.01
+## OptionalDeps: PetTracker_Switcher
+## LoadWith: Blizzard_PetBattleUI
+
+Config.lua
+HotKey.lua
