@@ -44,6 +44,12 @@ function HotKey:InitBlizzard()
     SkipButton.HotKey = SkipButton:CreateFontString(nil, 'OVERLAY', 'NumberFontNormalSmallGray')
     SkipButton.HotKey:SetPoint('TOPRIGHT', -1, -2)
 
+    local AutoButton = tdBattlePetAutoCombatAutoButton
+    if AutoButton then
+        AutoButton.HotKey = AutoButton:CreateFontString(nil, 'OVERLAY', 'NumberFontNormalSmallGray')
+        AutoButton.HotKey:SetPoint('TOPRIGHT', -1, -2)
+    end
+
     local Switcher = PetTracker and PetTracker.Switcher
     if Switcher then
         Switcher._Initialize = Switcher.Initialize
