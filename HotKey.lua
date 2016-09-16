@@ -14,6 +14,7 @@ local PetSelectionFrame = BottomFrame.PetSelectionFrame
 local HotKey            = CreateFrame('Frame', nil, PetBattleFrame)
 
 function HotKey:OnLoad(...)
+    print(1)
     if InCombatLockdown() then
         self:RegisterEvent('PLAYER_REGEN_DISABLED')
         self:RegisterEvent('PLAYER_REGEN_ENABLED')
@@ -105,6 +106,7 @@ function HotKey:InitBindings()
         PetSelectionFrame.Pet1,
         PetSelectionFrame.Pet2,
         PetSelectionFrame.Pet3,
+        tdBattlePetAutoCombatAutoButton,
     }
 
     -- PetTrackerExHotKey0
