@@ -13,8 +13,8 @@ local PetSelectionFrame = BottomFrame.PetSelectionFrame
 
 local HotKey            = CreateFrame('Frame', nil, PetBattleFrame)
 
-function HotKey:OnLoad(...)
-    print(1)
+function HotKey:OnLoad(event)
+    print(event)
     if InCombatLockdown() then
         self:RegisterEvent('PLAYER_REGEN_DISABLED')
         self:RegisterEvent('PLAYER_REGEN_ENABLED')
@@ -26,10 +26,17 @@ function HotKey:OnLoad(...)
         self:UnregisterEvent('PLAYER_REGEN_DISABLED')
         self:UnregisterEvent('PLAYER_REGEN_ENABLED')
 
+        self:RegisterEvent('PET_BATTLE_OPENING_START')
+        self:RegisterEvent('PET_BATTLE_OPENING_DONE')
+        self:RegisterEvent('PET_BATTLE_OVER')
+        self:RegisterEvent('PET_BATTLE_CLOSE')
+
+        self:SetScript('OnKeyDown', self.OnKeyDown)
+
         self.InitBlizzard = nil
         self.InitBindings = nil
         self.OnLoad       = nil
-        self:OnEvent(...)
+        self:OnEvent(event == 'PLAYER_LOGIN' and 'PET_BATTLE_OPENING_START' or event)
     end
 end
 
@@ -166,10 +173,18 @@ function HotKey:OnEvent(event, ...)
     end
 end
 
-HotKey:SetScript('OnKeyDown', HotKey.OnKeyDown)
-HotKey:SetScript('OnEvent', HotKey.OnLoad)
-
-HotKey:RegisterEvent('PET_BATTLE_OPENING_START')
-HotKey:RegisterEvent('PET_BATTLE_OPENING_DONE')
-HotKey:RegisterEvent('PET_BATTLE_OVER')
-HotKey:RegisterEvent('PET_BATTLE_CLOSE')
+if C_PetBattles.IsInBattle() then
+    if IsLoggedIn() then
+        HotKey:OnLoad('PET_BATTLE_OPENING_START')
+    else
+        HotKey:RegisterEvent('PLAYER_LOGIN')
+        HotKey:SetScript('OnEvent', function()
+            C_Timer.After(0, function()
+                HotKey:OnLoad('PET_BATTLE_OPENING_START')
+            end)
+        end)
+    end
+else
+    HotKey:RegisterEvent('PET_BATTLE_OPENING_START')
+    HotKey:SetScript('OnEvent', HotKey.OnLoad)
+end

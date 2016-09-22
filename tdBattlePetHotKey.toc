@@ -2,8 +2,10 @@
 ## Title: tdBattlePetHotKey
 ## Author: DengSir
 ## Version: 70000.01
-## OptionalDeps: PetTracker_Switcher
-## LoadWith: Blizzard_PetBattleUI
+## OptionalDeps: PetTracker_Switcher, tdBattlePetAutoCombat
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
 
 Config.lua
 HotKey.lua
