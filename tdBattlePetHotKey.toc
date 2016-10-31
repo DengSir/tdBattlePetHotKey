@@ -2,7 +2,7 @@
 ## Title: tdBattlePetHotKey
 ## Author: DengSir
 ## Version: 70000.01
-## OptionalDeps: PetTracker_Switcher, tdBattlePetAutoCombat
+## OptionalDeps: PetTracker_Switcher, tdBattlePetScript
 
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed

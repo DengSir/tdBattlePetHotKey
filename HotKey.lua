@@ -118,7 +118,7 @@ function HotKey:InitBindings()
         PetSelectionFrame.Pet1,
         PetSelectionFrame.Pet2,
         PetSelectionFrame.Pet3,
-        tdBattlePetAutoCombatAutoButton,
+        tdBattlePetScriptAutoButton,
     }
 
     -- PetTrackerExHotKey0
