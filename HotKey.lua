@@ -50,7 +50,7 @@ function HotKey:InitBlizzard()
     SkipButton.HotKey = SkipButton:CreateFontString(nil, 'OVERLAY', 'NumberFontNormalSmallGray')
     SkipButton.HotKey:SetPoint('TOPRIGHT', -1, -2)
 
-    local AutoButton = tdBattlePetAutoCombatAutoButton
+    local AutoButton = tdBattlePetScriptAutoButton
     if AutoButton then
         AutoButton.HotKey = AutoButton:CreateFontString(nil, 'OVERLAY', 'NumberFontNormalSmallGray')
         AutoButton.HotKey:SetPoint('TOPRIGHT', -1, -2)
@@ -89,7 +89,7 @@ function HotKey:InitBindings()
 
     local index = 0
     local function MakeBinding(button)
-        local name = 'PetTrackerExHotKey' .. index
+        local name = 'tdBattlePetHotKey' .. index
         local binding = CreateFrame('Button', name)
         if button then
             binding:SetScript('PostClick', function()
@@ -121,7 +121,7 @@ function HotKey:InitBindings()
         tdBattlePetScriptAutoButton,
     }
 
-    -- PetTrackerExHotKey0
+    -- tdBattlePetHotKey0
     MakeBinding()
 
     for i, button in ipairs(Buttons) do
@@ -135,7 +135,7 @@ end
 
 function HotKey:UpdateBindings()
     for i = 1, 5 do
-        SetOverrideBindingClick(self, true, tostring(i), 'PetTrackerExHotKey0')
+        SetOverrideBindingClick(self, true, tostring(i), 'tdBattlePetHotKey0')
     end
 
     for key, button in pairs(self.Bindings) do
