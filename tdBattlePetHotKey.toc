@@ -1,7 +1,7 @@
-## Interface: 70000
+## Interface: 80000
 ## Title: tdBattlePetHotKey
 ## Author: DengSir
-## Version: 70000.01
+## Version: 80000.01
 ## OptionalDeps: PetTracker_Switcher, tdBattlePetScript
 
 ## LoadManagers: AddonLoader

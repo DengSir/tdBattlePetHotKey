@@ -144,6 +144,7 @@ function HotKey:UpdateHotKeys()
     for key, button in pairs(self.Buttons) do
         if button.HotKey then
             button.HotKey:SetText(key)
+            button.HotKey:Show()
         end
     end
 end
